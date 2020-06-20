@@ -18,7 +18,7 @@ wget https://raw.githubusercontent.com/danghai1996/thuctapsinh/master/HaiDD/Scri
 ```
 
 ```
-https://gist.githubusercontent.com/hungviet99/8884f8f6fdf4c033fac3f1cbae16114c/raw/2caec43a576de0fc2e9cf40fca14963e8c52c550/UserThucTap.sh
+wget https://gist.githubusercontent.com/hungviet99/8884f8f6fdf4c033fac3f1cbae16114c/raw/2caec43a576de0fc2e9cf40fca14963e8c52c550/UserThucTap.sh
 ```
 
 **Cấp quyền và thực thi**
