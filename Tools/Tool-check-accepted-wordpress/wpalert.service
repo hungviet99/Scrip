@@ -1,0 +1,10 @@
+[Unit]
+Description=Dich vu canh bao khi co login vao trang quan tri wordpress - Gui canh bao khi co dang nhap thanh cong vao siteadmin
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=
+Restart=always
