@@ -71,7 +71,7 @@ sed -i 's|#CHAT_ID =|CHAT_ID = -468923562|' /etc/AlertWP/wpalert.py
 sed -i 's/#        poll_logfile("")/        poll_logfile("\/var\/log\/httpd\/access_log")/' /etc/AlertWP/wpalert.py
 ```
 
-**Lưu ý** Thay `/var/log/httpd/access_log` bằng đường dẫn file log wordpress. Với mỗi ký tự / ta phải thêm 1 ký tự \
+**Lưu ý:** Thay `/var/log/httpd/access_log` bằng đường dẫn file log wordpress. Với mỗi ký tự / ta phải thêm 1 ký tự \
 
 ## Tải về file service
 
