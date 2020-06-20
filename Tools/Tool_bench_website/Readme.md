@@ -21,7 +21,7 @@ yum install -y wget
 
 ```
 cd 
-wget https://raw.githubusercontent.com/hungviet99/thuc_tap/master/Ghi_chep_python/Tools/Tool_bench_website/niemthread.py
+wget https://raw.githubusercontent.com/hungviet99/thuc_tap/master/Ghi_chep_python/Tools/Tool_bench_website/Benmarkweb.py
 ```
 
 Sau đó tiến hành chạy lệnh và nhập vào trang web cần becnh : 
