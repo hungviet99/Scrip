@@ -9,7 +9,7 @@ log.setLevel(logging.INFO)
 # token and message id
 
 #TOKEN =
-#CHAT_ID = 
+#CHAT_ID =
 
 # hostname
 HOSTNAME = os.popen('hostname').read()
