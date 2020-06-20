@@ -118,7 +118,7 @@ sed -i 's|ExecStart=|ExecStart=/bin/python3 /etc/AlertWP/wpalert.py|' /usr/lib/s
 ```
 #### Trên Ubuntu: 
 ```
-sed -i 's|ExecStart=|ExecStart=/usr/bin/python3 /etc/AlertWP/wpalert.py|' /etc/systemd/system/wpalert.service
+sed -i 's|ExecStart=|ExecStart=/bin/python3 /etc/AlertWP/wpalert.py|' /etc/systemd/system/wpalert.service
 ```
 
 ### Khởi động dich vụ wpalert 
