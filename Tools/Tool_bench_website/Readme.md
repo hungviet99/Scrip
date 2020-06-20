@@ -21,13 +21,13 @@ yum install -y wget
 
 ```
 cd 
-wget https://raw.githubusercontent.com/hungviet99/thuc_tap/master/Ghi_chep_python/Tools/Tool_bench_website/Benmarkweb.py
+wgethttps://raw.githubusercontent.com/hungviet99/Tools_and_Script/master/Tools/Tool_bench_website/Benmarkweb.py
 ```
 
 Sau đó tiến hành chạy lệnh và nhập vào trang web cần becnh : 
 
 ```
-python3 niemthread.py
+python3 Benmarkweb.py
 ```
 
 ## Ubuntu 
@@ -46,13 +46,13 @@ apt install -y wget
 ```
 ```
 cd 
-wget https://raw.githubusercontent.com/hungviet99/thuc_tap/master/Ghi_chep_python/Tools/Tool_bench_website/niemthread.py
+wget https://raw.githubusercontent.com/hungviet99/Tools_and_Script/master/Tools/Tool_bench_website/Benmarkweb.py
 ```
 
 Sau đó chạy lệnh để bench 
 
 ```
-python3 niemthread.py
+python3 Benmarkweb.py
 ```
 
 
