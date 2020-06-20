@@ -8,7 +8,7 @@ log.setLevel(logging.INFO)
 
 # token and message id
 
-#TOKEN = ""
+#TOKEN =
 #CHAT_ID = 
 
 # hostname
