@@ -1,4 +1,4 @@
-# Hướng dẫn sử dụng Tool Python
+# Cấu hình 
 
 Tool Python sử dụng để gửi cảnh báo về Telegram khi có SSH `Accepted` vào hệ thống hoặc khi chuyển từ user `sudo` lên user `root`.
 
