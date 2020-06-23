@@ -44,7 +44,7 @@ cd /etc/sshalert
 ### Tải về file `sshalert.py`: 
 
 ```
-wget https://github.com/hungviet99/thuc_tap/raw/master/Ghi_chep_python/Turn_Python/sshalert.py
+wget https://raw.githubusercontent.com/hungviet99/Tools_and_Script/master/Tools/tool-check-accepted_ssh/sshalert.py
 ```
 
 ### Chỉnh sửa file như sau : 
@@ -75,7 +75,7 @@ sed -i 's|#CHAT_ID =|CHAT_ID = -468923562|' /etc/sshalert/sshalert.py
 cd /usr/lib/systemd/system
 ```
 ```
-wget https://github.com/hungviet99/thuc_tap/raw/master/Ghi_chep_python/Turn_Python/sshalert.service
+wget https://raw.githubusercontent.com/hungviet99/Tools_and_Script/master/Tools/tool-check-accepted_ssh/sshalert.service
 ```
 
 #### Đối với Ubuntu
@@ -85,7 +85,7 @@ cd /etc/systemd/system
 ```
 
 ```
-wget https://github.com/hungviet99/thuc_tap/raw/master/Ghi_chep_python/Turn_Python/sshalert.service
+wget https://raw.githubusercontent.com/hungviet99/Tools_and_Script/master/Tools/tool-check-accepted_ssh/sshalert.service
 ```
 
 ### Chỉnh sửa file `sshalert.service`
