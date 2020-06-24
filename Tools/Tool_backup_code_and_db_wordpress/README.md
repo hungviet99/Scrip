@@ -90,13 +90,13 @@ Chỉnh sửa cấu hình Script
 **Nhập vào đường dẫn đến thư mục chứa code** 
 
 ```
-sed -i 's/#FILE_CONFIG=/FILE_CONFIG=\/var\/www\/html/' /opt/Backup.sh
+sed -i 's/#FILE_CONFIG=/FILE_CONFIG=\/var\/www\/html/' /opt/Backupwp.sh
 ```
 
 **Nhập vào User ssh để truy cập vào server**
 
 ```
-sed -i 's/#USER_SCP=/USER_SCP=userbkwp/' /opt/Backup.sh
+sed -i 's/#USER_SCP=/USER_SCP=userbkwp/' /opt/Backupwp.sh
 ```
 
 Lưu ý: Thay `userbkwp` bằng user bạn sử dụng để truy cập máy chủ của mình.
@@ -104,7 +104,7 @@ Lưu ý: Thay `userbkwp` bằng user bạn sử dụng để truy cập máy ch�
 **Nhập vào IP của server** 
 
 ```
-sed -i 's/#IP_SCP=/IP_SCP=10.10.10.10/' /opt/Backup.sh
+sed -i 's/#IP_SCP=/IP_SCP=10.10.10.10/' /opt/Backupwp.sh
 ```
 Lưu ý thay địa chỉ `10.10.10.10` bằng địa chỉ máy chủ của bạn. 
 
@@ -112,7 +112,7 @@ Lưu ý thay địa chỉ `10.10.10.10` bằng địa chỉ máy chủ của b�
 **Nhập vào đường dẫn thư mục chứa thư mục backup trên server** 
 
 ```
-sed -i 's/#FILE_SCP=/FILE_SCP=\/home/' /opt/Backup.sh
+sed -i 's/#FILE_SCP=/FILE_SCP=\/home/' /opt/Backupwp.sh
 ```
 
 Tại đây mình sử dụng user `sudo` để đẩy file lên server nên đường dẫn file mình sẽ để là `/home`. Nếu sử dụng user `root` với được phép đẩy vào thư mục `/root`. Lưu ý rằng thư mục sẽ đi kèm với dấu `/` thì đối với mỗi dấu `/` ta sẽ phải đặt trước nó dấu `\`. 
@@ -120,7 +120,7 @@ Tại đây mình sử dụng user `sudo` để đẩy file lên server nên đ�
 **Nhập vào token_ID** 
 
 ```
-sed -i 's/#TOKEN=/TOKEN="918364925:AAGbl5y7463f8DFFx4RhkeB3_eRhUUNfHHw"/' /opt/Backup.sh
+sed -i 's/#TOKEN=/TOKEN="918364925:AAGbl5y7463f8DFFx4RhkeB3_eRhUUNfHHw"/' /opt/Backupwp.sh
 ```
 Lưu ý: Thay giá trị 918364925:AAGbl5y7463f8DFFx4RhkeB3_eRhUUNfHHw bằng token ID của bạn.
 
