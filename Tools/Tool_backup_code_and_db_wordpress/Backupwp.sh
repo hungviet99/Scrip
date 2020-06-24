@@ -59,8 +59,8 @@ else
 fi
 
 # Backup ve driver
-rclone mkdir backupwp35194:/$FOLDER 2>>/var/log/wpbackup.log
-rclone move /opt/$FOLDER.tar.gz backupwp35194:$FOLDER 2>>/var/log/wpbackup.log
+rclone mkdir backupwp:/$FOLDER 2>>/var/log/wpbackup.log
+rclone move /opt/$FOLDER.tar.gz backupwp:$FOLDER 2>>/var/log/wpbackup.log
 if [ $? -eq 0 ]
 then
     curl -s -X POST $URL -d chat_id=$ID -d text="$SUCCESS_DRV" 2>>/var/log/wpbackup.log
