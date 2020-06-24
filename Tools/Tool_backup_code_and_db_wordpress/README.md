@@ -82,6 +82,7 @@ Tải về script
 
 ```
 cd /opt
+
 wget https://raw.githubusercontent.com/hungviet99/Tools_and_Script/master/Tools/Tool_backup_code_and_db_wordpress/Backupwp.sh
 ``` 
 
@@ -92,6 +93,7 @@ Chỉnh sửa cấu hình Script
 ```
 sed -i 's/#FILE_CONFIG=/FILE_CONFIG=\/var\/www\/html/' /opt/Backupwp.sh
 ```
+**Lưu ý:** Thay đường dẫn thư mục `/var/www/html/` bằng đường dẫn thư mục chứa code wordpress của bạn. Với thư mục sẽ đi kèm với dấu `/` thì đối với mỗi dấu `/` ta sẽ phải đặt trước nó dấu `\`. 
 
 **Nhập vào User ssh để truy cập vào server**
 
@@ -99,30 +101,30 @@ sed -i 's/#FILE_CONFIG=/FILE_CONFIG=\/var\/www\/html/' /opt/Backupwp.sh
 sed -i 's/#USER_SCP=/USER_SCP=userbkwp/' /opt/Backupwp.sh
 ```
 
-Lưu ý: Thay `userbkwp` bằng user bạn sử dụng để truy cập máy chủ của mình.
+**Lưu ý:** Thay `userbkwp` bằng user bạn sử dụng để truy cập máy chủ của mình.
 
 **Nhập vào IP của server** 
 
 ```
 sed -i 's/#IP_SCP=/IP_SCP=10.10.10.10/' /opt/Backupwp.sh
 ```
-Lưu ý thay địa chỉ `10.10.10.10` bằng địa chỉ máy chủ của bạn. 
+**Lưu ý:** thay địa chỉ `10.10.10.10` bằng địa chỉ máy chủ của bạn. 
 
 
 **Nhập vào đường dẫn thư mục chứa thư mục backup trên server** 
 
 ```
-sed -i 's/#FILE_SCP=/FILE_SCP=\/home/' /opt/Backupwp.sh
+sed -i 's/#FILE_SCP=/FILE_SCP=\/home\/userbkwp/' /opt/Backupwp.sh
 ```
 
-Tại đây mình sử dụng user `sudo` để đẩy file lên server nên đường dẫn file mình sẽ để là `/home`. Nếu sử dụng user `root` với được phép đẩy vào thư mục `/root`. Lưu ý rằng thư mục sẽ đi kèm với dấu `/` thì đối với mỗi dấu `/` ta sẽ phải đặt trước nó dấu `\`. 
+Tại đây mình sử dụng user `sudo` để đẩy file lên server nên đường dẫn file mình sẽ để là `/home/userbkwp`, chính là thư mục home của user. Nếu sử dụng user `root` với được phép đẩy vào thư mục `/root`. Lưu ý rằng thư mục sẽ đi kèm với dấu `/` thì đối với mỗi dấu `/` ta sẽ phải đặt trước nó dấu `\`. 
 
 **Nhập vào token_ID** 
 
 ```
 sed -i 's/#TOKEN=/TOKEN="918364925:AAGbl5y7463f8DFFx4RhkeB3_eRhUUNfHHw"/' /opt/Backupwp.sh
 ```
-Lưu ý: Thay giá trị 918364925:AAGbl5y7463f8DFFx4RhkeB3_eRhUUNfHHw bằng token ID của bạn.
+**Lưu ý:** Thay giá trị `918364925:AAGbl5y7463f8DFFx4RhkeB3_eRhUUNfHHw` bằng token ID của bạn.
 
 **Nhập vào message ID** 
 
@@ -130,7 +132,7 @@ Lưu ý: Thay giá trị 918364925:AAGbl5y7463f8DFFx4RhkeB3_eRhUUNfHHw bằng to
 sed -i 's|#ID=|ID="-468923562"|' /opt/Backupwp.sh
 ```
 
-Lưu ý: Thay ID chat -468923562 bằng ID chat của bạn.
+**Lưu ý:** Thay ID chat `-468923562` bằng ID chat của bạn.
 
 
 **Cấp quyền cho file thực thi** 
@@ -138,3 +140,23 @@ Lưu ý: Thay ID chat -468923562 bằng ID chat của bạn.
 ```
 chmod +x /opt/Backupwp.sh
 ```
+
+### Bước 5: Tạo crontab để tự động backup 
+
+Tạo 1 crontab tự động chạy script để backup vào 0h30 chủ nhật hàng tuần : 
+
+sử dụng lênh 
+
+```
+crontab -e
+```
+ 
+và ghi vào file những nội dung sau : 
+
+```
+30 0 * * 0 /opt/Backupwp.sh
+```
+sau đó lưu lại file và thoát. 
+
+Như vậy ta đã cấu hình xong script để tự động backup code và DB của wordpress. Mỗi khi backup xong sẽ có 1 tin nhắn được gửi về telegram. 
+
