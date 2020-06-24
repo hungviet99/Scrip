@@ -4,10 +4,11 @@ TODAY=$(date +"%Y-%m-%d")
 FOLDER=backupwp-$TODAY
 FOLDERSQL=backupsql-$TODAY
 
-# File config là đường dẫn của thư mục chứa code của wordpress. Thường là /var/www/html hoặc cũng có thể là /var/www/public_html, tùy vào từng trang web hoặc cách cấu hình của người quản trị 
+# File config là đường dẫn của thư mục chứa code của wordpress. Thường là /var/www/html hoặc cũng có thể là /var/www/public_html, tùy vào từng trang web hoặc cách cấu hình của người quản trị
+# Nếu sử dụng web hosting control panel thì đường dẫn có thể lầ /home/user/public_html
 #FILE_CONFIG=
 
-# User sử dụng truy cập vào máy chủ từ xa để đẩy file backup lên đó. 
+# User sử dụng truy cập vào máy chủ từ xa để đẩy file backup lên đó
 # VD: root
 #USER_SCP=
 
@@ -15,14 +16,14 @@ FOLDERSQL=backupsql-$TODAY
 # VD: 10.10.10.10
 #IP_SCP=
 
-# Là nơi lưu file backup trên máy đích. Chỉ rõ đường dẫn đến thư mục đó. 
+# Là nơi lưu file backup trên máy đích. Chỉ rõ đường dẫn đến thư mục đó
 # VD: /root/
 #FILE_SCP=
 
-#Token là mã token của bot telegram. 
+#Token là mã token của bot telegram
 #TOKEN=
 
-#ID là ID telegram của bạn hoặc có thể là ID của 1 nhóm. 
+#ID là ID telegram của bạn hoặc có thể là ID của 1 nhóm
 #ID=
 
 # Message
