@@ -133,3 +133,8 @@ sed -i 's|#ID=|ID="-468923562"|' /opt/Backupwp.sh
 Lưu ý: Thay ID chat -468923562 bằng ID chat của bạn.
 
 
+**Cấp quyền cho file thực thi** 
+
+```
+chmod +x /opt/Backupwp.sh
+```
