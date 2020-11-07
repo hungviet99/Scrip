@@ -1,0 +1,12 @@
+[Unit]
+Description= Checkping
+After=network.target
+
+[Service]
+PermissionsStartOnly=True
+User=root
+Group=root
+ExecStart=/opt/checkping/env/bin/python3 /opt/checkping/main.py --serve-in-foreground
+
+[Install]
+WantedBy=multi-user.target
