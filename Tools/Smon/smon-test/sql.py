@@ -13,6 +13,9 @@ def get_cur():
 	return con, cur
 	
 def create_table():
+	"""
+	Tao bang
+	"""
 	con, cur = get_cur()
 	sql = """
 	CREATE TABLE IF NOT EXISTS `service` (
@@ -40,6 +43,9 @@ def create_table():
 	
 	
 def add_service(ip, port, desc, group, script, http, body):
+	"""
+	Them 1 service moi
+	"""
 	con, cur = get_cur()
 	sql = """ insert into service(ip, port, desc, `group`, script, http, body) values ('%s', '%s', '%s', '%s', '%s', '%s', '%s')""" % (ip, port, desc, group, script, http, body)
 	try:
@@ -51,6 +57,9 @@ def add_service(ip, port, desc, group, script, http, body):
 	
 	
 def del_service(ip, port):
+	"""
+	Xoa 1 service
+	"""
 	con, cur = get_cur()
 	sql = """ delete from service where ip = '%s' and port = '%s' """ % (ip, port)
 	try:
@@ -62,6 +71,9 @@ def del_service(ip, port):
 	
 	
 def edit_service(ip, port, desc, **kwargs):
+	"""
+	Sua service
+	"""
 	con, cur = get_cur()
 	if desc:
 		sql = """ update service set desc = '%s' where ip = '%s' and port = '%s' """ % (desc, ip, port)
