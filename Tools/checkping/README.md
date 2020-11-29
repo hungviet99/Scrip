@@ -17,9 +17,9 @@ apt install python3-pip -y
 
 ```
 cd /opt
-git clone https://github.com/hungviet99/Tools_and_Script.git 
-mv /opt/Tools_and_Script/Tools/checkping
-rm -rf opt/Tools_and_Script
+git clone https://github.com/hungviet99/tools_and_script.git 
+mv /opt/tools_and_script/tools/checkping
+rm -rf opt/tools_and_script
 ```
 
 - Cài đặt môi trường ảo python 
