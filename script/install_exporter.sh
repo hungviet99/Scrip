@@ -42,6 +42,7 @@ f_setup_node_exporter(){
             firewall-cmd --reload || echo "firewall of"
             dnf install -y wget
         fi
+        
         echo "############## DOWNLOAD SOURCE CODE NODE EXPORTER ##############"
         useradd --no-create-home --shell /bin/false node_exporter
         cd /opt
@@ -51,8 +52,8 @@ f_setup_node_exporter(){
         chown node_exporter:node_exporter /usr/local/bin/node_exporter
         rm -rf node_exporter-0.18.1.linux-amd64*
 
-echo "############## CREATE SERVICE NODE EXPORTER ##############"
-cat <<EOF >  /etc/systemd/system/node_exporter.service
+        echo "############## CREATE SERVICE NODE EXPORTER ##############"
+        cat <<EOF >  /etc/systemd/system/node_exporter.service
 [Unit]
 Description=Node Exporter
 Wants=network-online.target
@@ -84,17 +85,20 @@ f_setup_libvirt_exporter(){
             firewall-cmd --zone=public --add-port=9177/tcp --permanent  || echo "firewall of"
             firewall-cmd --reload   || echo "firewall of"
             cd /opt
+
             echo "########### Download golang ###########"
             wget https://golang.org/dl/go1.15.5.linux-amd64.tar.gz
             tar -zxvf go1.15.5.linux-amd64.tar.gz -C /usr/local/
             export PATH=$PATH:/usr/local/go/bin
             mkdir $HOME/work
             export GOPATH=$HOME/work
+
             echo "########### Cai dat cac goi can thiet ###########"
             yum install ca-certificates gcc-c++ git go libnl-devel kernel-devel make -y
             yum install -y virt-viewer libguestfs-tools python-devel python3-devel
             yum install -y libvirt virt-install bridge-utils virt-manager
             yum install -y libvirt-devel
+
             echo "########### download libxml ###########"
             wget ftp://xmlsoft.org/libxml2/libxml2-2.9.8.tar.gz -P /tmp
             tar -xf /tmp/libxml2-2.9.8.tar.gz -C /tmp/
@@ -104,6 +108,7 @@ f_setup_libvirt_exporter(){
             make install
             mkdir -p /libvirt-exporter
             cd /libvirt-exporter
+
             echo "########### Download source code linvirt exporter ###########"
             wget https://github.com/hungviet99/libvirt-exporter/archive/refs/tags/2.1.1.tar.gz
             tar xvf 2.1.1.tar.gz
@@ -111,8 +116,8 @@ f_setup_libvirt_exporter(){
             cd /libvirt-exporter/
             echo "build code"
             go build -mod vendor
-echo "########### Tao service linvirt exporter ###########"
-cat <<EOF >  /etc/systemd/system/libvirt_exporter.service
+            echo "########### Tao service linvirt exporter ###########"
+            cat <<EOF >  /etc/systemd/system/libvirt_exporter.service
 [Unit]
 Description=Libvirt Exporter
 Wants=network-online.target
@@ -135,17 +140,20 @@ EOF
             firewall-cmd --zone=public --add-port=9177/tcp --permanent  || echo "firewall of"
             firewall-cmd --reload   || echo "firewall of"
             cd /opt
+
             echo "########### Download golang ###########"
             wget https://golang.org/dl/go1.15.5.linux-amd64.tar.gz
             tar -zxvf go1.15.5.linux-amd64.tar.gz -C /usr/local/
             export PATH=$PATH:/usr/local/go/bin
             mkdir $HOME/work
             export GOPATH=$HOME/work
+
             echo "########### Cai dat cac goi can thiet ###########"
-            yum install ca-certificates gcc-c++ git go libnl-devel kernel-devel make -y
-            yum install -y virt-viewer libguestfs-tools python-devel python3-devel
+            yum install ca-certificates gcc-c++ git go libnl3-devel kernel-devel make -y
+            yum install -y virt-viewer libguestfs-tools python3-devel
             yum install -y libvirt virt-install bridge-utils virt-manager
             yum install -y libvirt-devel
+
             echo "########### download libxml ###########"
             wget ftp://xmlsoft.org/libxml2/libxml2-2.9.8.tar.gz -P /tmp
             tar -xf /tmp/libxml2-2.9.8.tar.gz -C /tmp/
@@ -155,6 +163,7 @@ EOF
             make install
             mkdir -p /libvirt-exporter
             cd /libvirt-exporter
+
             echo "########### Download source code linvirt exporter ###########"
             wget https://github.com/hungviet99/libvirt-exporter/archive/refs/tags/2.1.1.tar.gz
             tar xvf 2.1.1.tar.gz
@@ -162,8 +171,8 @@ EOF
             cd /libvirt-exporter/
             echo "build code"
             go build -mod vendor
-echo "########### Tao service linvirt exporter ###########"
-cat <<EOF >  /etc/systemd/system/libvirt_exporter.service
+            echo "########### Tao service linvirt exporter ###########"
+            cat <<EOF >  /etc/systemd/system/libvirt_exporter.service
 [Unit]
 Description=Libvirt Exporter
 Wants=network-online.target
@@ -187,15 +196,34 @@ EOF
     fi
 }
 
-f_main(){
-    #f_setup_node_exporter
-    if virsh version > /dev/null 2>&1;
-    then
-        f_setup_libvirt_exporter
-        echo 'Cai dat libvirt exporter thanh cong'
+f_check_libvirt_exporter_service(){
+    systemctl | grep libvirt-exporter ; systemctl | grep libvirt_exporter 
+    if [ $? -eq 0 ]; then
+        echo "Libvirt exporter da ton tai"
     else
-        echo 'Khong co libvirt !! Khong cai Libvirt exporter'
+        if virsh version > /dev/null 2>&1;
+        then
+            f_setup_libvirt_exporter
+            echo "###### CAI DAT XONG LIBVIRT EXPORTER ######"
+        else
+            echo 'Khong co libvirt !! Khong cai Libvirt exporter'
+        fi
     fi
+}
+
+f_check_node_exporter_service(){
+    systemctl | grep node-exporter ; systemctl | grep node_exporter
+    if [ $? -eq 0 ]; then
+        echo "Node exporter da ton tai"
+    else
+        f_setup_node_exporter
+        echo "###### CAI DAT XONG LIBVIRT EXPORTER ######"
+    fi
+}
+
+f_main(){
+    f_check_libvirt_exporter_service
+    f_check_node_exporter_service
     echo "       ################################"
     echo "       ###### CAI DAT THANH CONG ######"
     echo "       ################################"
