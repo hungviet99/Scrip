@@ -1,7 +1,7 @@
 beautifulsoup4==4.9.1
 pyTelegramBotAPI==3.7.1
 python-telegram-bot==12.8
-redis==3.5.3
+redis==4.5.3
 requests==2.24.0
 soupsieve==2.0.1
 Unidecode==1.1.1
